@@ -2,6 +2,7 @@
       function createRowDiv(){
         let board = document.getElementById('board')
         let div = document.createElement('div')
+        div.classList.add('clearboth')
         board.appendChild(div);
         return div;
       }
@@ -12,16 +13,23 @@
         return cellDiv;
       }
 
-      function setDivText(div, text){
-        let textNode = document.createTextNode(text);
-        div.appendChild(textNode)
-        return textNode
+      function createDivObject(rowDiv){
+        let div = createCellDiv(rowDiv);
+        div.classList.add('cell')
+        div.classList.add('inline')
+        div.classList.add('dead')
+        return div;
       }
 
-      function createDivObject(rowDiv, text){
-        let div = createCellDiv(rowDiv);
-        let textNode = setDivText(div, text)
-        return { div: div, text: textNode };
+      function toggleClass(div, val){
+        if(val == 0){
+          div.classList.add('dead')
+          div.classList.remove('live')
+        }
+        else if(val == 1){
+          div.classList.add('live')
+          div.classList.remove('dead')
+        }
       }
 
       function createBoard (rows, cols){
@@ -31,8 +39,8 @@
           let rowDiv = createRowDiv()
           for(let j = 0; j < cols; j+=1){
             board[i][j] = {
-              text: i + ',' + j,
-              div: createDivObject(rowDiv, '(' + i + ',' + j +')')
+              text: 0,
+              div: createDivObject(rowDiv)
             }
             Object.defineProperty(board[i][j], 'content', {
               get: () => {
@@ -40,7 +48,7 @@
               },
               set: (val) => {
                 board[i][j].text = val
-                board[i][j].div.text.data = val
+                toggleClass(board[i][j].div, val)
               }
             })
           }
@@ -55,6 +63,8 @@
 
       setInterval(function(){
         for(let i = 0; i < parseInt(Math.random() * 10); i++){
-          board[parseInt(Math.random() * NUMBER_OF_ROWS)][parseInt(Math.random() * NUMBER_OF_COLS)]['content'] = parseInt(Math.random() * 1000)
+          let setVal = parseInt(Math.random() * 2);
+          console.log(setVal);
+          board[parseInt(Math.random() * NUMBER_OF_ROWS)][parseInt(Math.random() * NUMBER_OF_COLS)]['content'] = setVal;
         }
       }, 1000)

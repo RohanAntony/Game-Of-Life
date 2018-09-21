@@ -5,3 +5,17 @@ div.inline{
 div.clearboth{
   clear:both;
 }
+
+div.cell{
+  margin:10px;
+  width:100px;
+  height:100px;
+}
+
+div.live {
+  background-color: white;
+}
+
+div.dead {
+  background-color: black;
+}

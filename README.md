@@ -1,4 +1,4 @@
-# Game-Of-Life
+# Game-Of-Life [wikipedia](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
 
 Game of life is a zero player game, which lives as an example of how a simple set of rules with an initial state can lead to creation of complex life forms.
 The game consits of a board which needs to be set with an initial configuration. Once the configuration is set, the below rules are followed till the board collapses with no cells available.
