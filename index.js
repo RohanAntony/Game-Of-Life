@@ -61,11 +61,7 @@ function createBoardObject(rows, cols){
           return obj.prev;  //return the past state value
         },
         set:(val) => {
-          // if(i != 0 && j != 0 && i != rows+1 && j != cols+1){ //objects only inside boundary should be able to update
             obj.next = val; //set the future state value
-          // }else{
-            // console.log('Error!! Setting border parameters not allowed')
-          // }
         }
       })
       obj.updateState = () => {
@@ -126,7 +122,16 @@ function nextState(board, rows, cols){
   }
 }
 
-let IntervalFunction
+function resetState(board, rows, cols){
+  for(let i = 0; i < rows; i+=1){
+    for(let j = 0; j < cols; j+=1){
+      board[i+1][j+1].state = 0
+      board[i+1][j+1].updateState()
+    }
+  }
+}
+
+let IntervalFunction = null;
 
 function start(){
   IntervalFunction = setInterval(function(){
@@ -136,8 +141,17 @@ function start(){
 
 function stop(){
   clearInterval(IntervalFunction)
+  IntervalFunction = null
 }
 
 function next(){
+  clearInterval(IntervalFunction)
+  IntervalFunction = null
   nextState(board, NUMBER_OF_ROWS, NUMBER_OF_COLS)
+}
+
+function reset(){
+  clearInterval(IntervalFunction)
+  IntervalFunction = null
+  resetState(board, NUMBER_OF_ROWS, NUMBER_OF_COLS)
 }
