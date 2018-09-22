@@ -13,15 +13,16 @@
         return cellDiv;
       }
 
-      function createDivObject(rowDiv){
+      function createDivObject(rowDiv, i, j){
         let div = createCellDiv(rowDiv);
         div.classList.add('cell')
         div.classList.add('inline')
         div.classList.add('dead')
+        div.setAttribute("onclick", "toggleCell(" + i + "," + j + ")")
         return div;
       }
 
-      function toggleClass(div, val){
+      function setClass(div, val){
         if(val == 0){
           div.classList.add('dead')
           div.classList.remove('live')
@@ -40,7 +41,7 @@
           for(let j = 0; j < cols; j+=1){
             board[i][j] = {
               text: 0,
-              div: createDivObject(rowDiv)
+              div: createDivObject(rowDiv, i, j)
             }
             Object.defineProperty(board[i][j], 'content', {
               get: () => {
@@ -48,7 +49,7 @@
               },
               set: (val) => {
                 board[i][j].text = val
-                toggleClass(board[i][j].div, val)
+                setClass(board[i][j].div, val)
               }
             })
           }
@@ -56,15 +57,19 @@
         return board;
       }
 
-      const NUMBER_OF_ROWS = 5
-      const NUMBER_OF_COLS = 5
+      function toggleCell(i, j){
+        board[i][j]['content'] = (board[i][j]['content'] ? 0 : 1);
+      }
+
+      const NUMBER_OF_ROWS = 50
+      const NUMBER_OF_COLS = 50
 
       let board = createBoard(NUMBER_OF_ROWS, NUMBER_OF_COLS)
 
-      setInterval(function(){
-        for(let i = 0; i < parseInt(Math.random() * 10); i++){
-          let setVal = parseInt(Math.random() * 2);
-          console.log(setVal);
-          board[parseInt(Math.random() * NUMBER_OF_ROWS)][parseInt(Math.random() * NUMBER_OF_COLS)]['content'] = setVal;
-        }
-      }, 1000)
+      // setInterval(function(){
+      //   for(let i = 0; i < parseInt(Math.random() * 100); i++){
+      //     let setVal = parseInt(Math.random() * 2);
+      //     console.log(setVal);
+      //     board[parseInt(Math.random() * NUMBER_OF_ROWS)][parseInt(Math.random() * NUMBER_OF_COLS)]['content'] = setVal;
+      //   }
+      // }, 1000)

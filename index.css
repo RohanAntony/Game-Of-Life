@@ -1,3 +1,11 @@
+#board{
+  float:left;
+}
+
+input, button {
+  display: block;
+}
+
 div.inline{
   float:left;
 }
@@ -7,9 +15,9 @@ div.clearboth{
 }
 
 div.cell{
-  margin:10px;
-  width:100px;
-  height:100px;
+  border: 1px solid black;
+  width:10px;
+  height:10px;
 }
 
 div.live {
@@ -17,5 +25,5 @@ div.live {
 }
 
 div.dead {
-  background-color: black;
+  background-color: grey;
 }
