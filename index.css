@@ -1,9 +1,42 @@
-#board{
+#inputPane{
+  width:38%;
+  float:left;
+  margin: 1%;
+}
+
+#boardPane{
+  width:60%;
   float:left;
 }
 
-input, button {
-  display: block;
+#buttons{
+  width: 60%;
+  display:block;
+  clear:both;
+  margin: 0 auto;
+}
+
+
+#boardInnerPane{
+  width: 100%;
+  display:block;
+  clear:both;
+}
+
+#board{
+  margin: 0 auto;
+}
+
+input{
+  display:block;
+  clear:both;
+  width: 50%;
+  border: 1px solid black;
+  /* padding: 1%; */
+}
+
+h1 {
+  text-align: center;
 }
 
 div.inline{
@@ -11,6 +44,7 @@ div.inline{
 }
 
 div.clearboth{
+  width:100%;
   clear:both;
 }
 
@@ -25,5 +59,9 @@ div.live {
 }
 
 div.dead {
-  background-color: grey;
+  background-color: #444;
+}
+
+.input{
+  margin: 2% auto;
 }
