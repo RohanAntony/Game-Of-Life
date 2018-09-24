@@ -11,14 +11,37 @@
 
     <div id="inputPane">
       <h1>Conway's Game Of Life</h1>
-      <div class="firstInputs">
+      <div class="inputs">
         <input class="input" type="text" id="time" value="500" placeholder="ms"/>
         <button class="button" type="button" name="button" onclick="start()">Start</button>
         <button class="button" type="button" name="button" onclick="stop()">Stop</button>
       </div>
-      <div id="secondInputs">
+      <div id="inputs">
         <button class="button" type="button" name="button" onclick="next()">Next</button>
         <button class="button" type="button" name="button" onclick="reset()">Reset</button>
+      </div>
+      <div class="inputs">
+        <p>Number of Iterations:<span id="numberOfIteration">0</span></p>
+      </div>
+      <div class="inputs">
+        <label for="preset">Select a Preset: </label>
+        <select class="preset" name="presets">
+          <optgroup label="Still lifes">
+            <option value="Block">Block</option>
+            <option value="Beehive">Beehive</option>
+            <option value="Loaf">Loaf</option>
+            <option value="Boat">Boat</option>
+            <option value="Tub">Tub</option>
+          </optgroup>
+          <optgroup label="Oscillators">
+            <option value="Blinker">Blinker</option>
+            <option value="Toad">Toad</option>
+            <option value="Beacon">Beacon</option>
+            <option value="Pulsar">Pulsar</option>
+            <option value="Pentadecathlon">Pentadecathlon</option>
+          </optgroup>
+        </select>
+        <button class="button" type="button" onclick="preset()">Preset</button>
       </div>
     </div>
 

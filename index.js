@@ -1,6 +1,7 @@
 const NUMBER_OF_ROWS = 50
 const NUMBER_OF_COLS = 50
-let TIME_OF_ITERATION = 500
+let timeOfIteration = 500
+let numberOfIterations = 0
 
 function createRowDiv(){
   let board = document.getElementById('board')
@@ -136,11 +137,14 @@ let IntervalFunction = null;
 
 function start(){
   let iterationTime = document.getElementById('time').value
-  TIME_OF_ITERATION = parseInt(iterationTime) ? parseInt(iterationTime) : 500;
-  document.getElementById('time').value = TIME_OF_ITERATION
+  timeOfIteration = parseInt(iterationTime) ? parseInt(iterationTime) : 500;
+  document.getElementById('time').value = timeOfIteration
+  numberOfIterations = 0;
   IntervalFunction = setInterval(function(){
     nextState(board, NUMBER_OF_ROWS, NUMBER_OF_COLS)
-  }, TIME_OF_ITERATION)
+    numberOfIterations += 1;
+    document.getElementById('numberOfIteration').innerHTML = numberOfIterations
+  }, timeOfIteration)
 }
 
 function stop(){
