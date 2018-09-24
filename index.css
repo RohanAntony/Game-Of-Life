@@ -1,3 +1,7 @@
+h1{
+  font-family: 'Montserrat', sans-serif;
+}
+
 #inputPane{
   width:38%;
   float:left;
@@ -30,9 +34,8 @@
 input{
   display:block;
   clear:both;
-  width: 50%;
-  border: 1px solid black;
-  /* padding: 1%; */
+  width: 10%;
+  border: 1px solid #555;
 }
 
 h1 {

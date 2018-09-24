@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Conway's Game of Life</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" href="./index.css">
   </head>
   <body>
@@ -10,10 +11,12 @@
 
     <div id="inputPane">
       <h1>Conway's Game Of Life</h1>
-      <!-- <input class="input" type="text" name="" value="" placeholder="Enter time of single iteration"/> -->
-      <div id="buttons">
+      <div class="firstInputs">
+        <input class="input" type="text" id="time" value="500" placeholder="ms"/>
         <button class="button" type="button" name="button" onclick="start()">Start</button>
         <button class="button" type="button" name="button" onclick="stop()">Stop</button>
+      </div>
+      <div id="secondInputs">
         <button class="button" type="button" name="button" onclick="next()">Next</button>
         <button class="button" type="button" name="button" onclick="reset()">Reset</button>
       </div>

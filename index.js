@@ -1,3 +1,7 @@
+const NUMBER_OF_ROWS = 50
+const NUMBER_OF_COLS = 50
+let TIME_OF_ITERATION = 500
+
 function createRowDiv(){
   let board = document.getElementById('board')
   let div = document.createElement('div')
@@ -81,9 +85,6 @@ function toggleCell(i, j){
   console.log(i, j)
 }
 
-const NUMBER_OF_ROWS = 50
-const NUMBER_OF_COLS = 50
-
 createBoardDisplay(NUMBER_OF_ROWS, NUMBER_OF_COLS)
 createBoardObject(NUMBER_OF_ROWS, NUMBER_OF_COLS)
 
@@ -134,9 +135,12 @@ function resetState(board, rows, cols){
 let IntervalFunction = null;
 
 function start(){
+  let iterationTime = document.getElementById('time').value
+  TIME_OF_ITERATION = parseInt(iterationTime) ? parseInt(iterationTime) : 500;
+  document.getElementById('time').value = TIME_OF_ITERATION
   IntervalFunction = setInterval(function(){
     nextState(board, NUMBER_OF_ROWS, NUMBER_OF_COLS)
-  }, 100)
+  }, TIME_OF_ITERATION)
 }
 
 function stop(){
